@@ -1,0 +1,23 @@
+create table Manager
+(
+mid int,
+first_name varchar(255),
+last_name varchar(255),
+depid int,
+card_number varchar(255),
+start_date date CHECK (start_date is not null),
+end_date date,
+inserted_date datetime,
+updated_date datetime
+);
+
+create table Department
+(
+depid int,
+depname varchar(255),
+dep_range int,
+start_date date CHECK (start_date is not null),
+end_date date,
+inserted_date datetime,
+updated_date datetime
+);

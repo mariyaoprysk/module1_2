@@ -1,0 +1,3 @@
+ALTER TABLE Manager
+ADD CONSTRAINT FK_DepManager
+FOREIGN KEY (depid) REFERENCES Department (depid);

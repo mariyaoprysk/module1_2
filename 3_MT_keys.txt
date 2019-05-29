@@ -1,0 +1,14 @@
+ALTER TABLE Manager
+ADD PRIMARY KEY (mid);
+
+
+ALTER TABLE Manager
+ADD CONSTRAINT uk_manager UNIQUE KEY(card_number);
+
+
+
+ALTER TABLE Department
+ADD PRIMARY KEY  (depid);
+
+ALTER TABLE Department
+ADD CONSTRAINT uk_department UNIQUE KEY(depname);

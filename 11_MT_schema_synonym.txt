@@ -1,0 +1,16 @@
+CREATE DATABASE MT_education;
+
+create synonym Manager for MT_module_2.Manager;
+go
+create synonym Department for MT_module_2.Department;
+go
+create synonym Customer for MT_module_2.Customer;
+go
+create synonym Order for MT_module_2.Order;
+go
+
+select * from Manager ;
+select * from Department ;
+select * from Customer ;
+select * from Order ;
+

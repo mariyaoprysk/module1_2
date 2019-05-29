@@ -1,0 +1,17 @@
+CREATE TRIGGER tg_Manager_update
+AFTER UPDATE
+   ON Manager FOR EACH ROW
+
+BEGIN
+
+DECLARE v_updated_date datetime;
+
+   SELECT sysdate 
+   INTO v_inserted_date
+   from dual;
+
+   update Manager
+   set updated_date = v_updated_date
+   where end_date is not null;
+
+END;

@@ -1,0 +1,65 @@
+--update
+CREATE TRIGGER tg_Customer_update
+AFTER UPDATE
+   ON Customer FOR EACH ROW
+
+BEGIN
+
+DECLARE v_businessid  int;
+
+   SELECT max(businessid) 
+   INTO v_businessid
+   from Order;
+
+   update Customer
+   set businessid = v_businessid 
+   where businessid is null;
+
+END;
+
+--insert
+CREATE TRIGGER tg_Customer_insert
+AFTER INSERT
+   ON Customer FOR EACH ROW
+
+BEGIN
+
+DECLARE v_inserted_date  detetime;
+
+   SELECT sysdate 
+   INTO v_inserted_date
+   from dual;
+
+   update Customer
+   set inserted_date = v_inserted_date;
+
+END;
+
+--delete
+create table Customer_audit
+(
+cid int,
+deleted_date datetime,
+deleted_by varchar(50)
+);
+
+CREATE TRIGGER tg_Customer_delete
+AFTER DELETE
+   ON Customer FOR EACH ROW
+
+BEGIN
+
+  DECLARE vUser varchar(50);
+
+   SELECT USER() INTO vUser;
+
+   INSERT INTO Customer_audit
+   ( cid,
+     deleted_date,
+     deleted_by)
+   VALUES
+   ( OLD.cid,
+     SYSDATE(),
+     vUser );
+
+END;

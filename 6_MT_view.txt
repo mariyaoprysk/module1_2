@@ -1,0 +1,11 @@
+create view v_Manager 
+as 
+select mid, first_name, last_name,
+       depid, start_date, end_date
+from Manager;
+
+create view v_Department 
+as 
+select depid, depname, dep_range,
+       start_date, end_date
+from Department;

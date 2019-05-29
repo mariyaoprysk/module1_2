@@ -1,0 +1,29 @@
+create table Customer
+(
+cid int,
+cname varchar(255),
+card_number varchar(255),
+adress varchar(2000),
+birth_date date,
+countryid int,
+mobile_number varchar(60),
+businessid int,
+inserted_date datetime,
+updated_date datetime
+);
+
+create table Order
+(
+cid int,
+cname varchar(255),
+card_number varchar(255),
+adress varchar(2000),
+birth_date date,
+countryid int,
+mobile_number varchar(60),
+businessid int,
+inserted_date datetime,
+updated_date datetime,
+type_of_operation varchar(255),
+date_of_operation date
+);

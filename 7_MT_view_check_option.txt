@@ -1,0 +1,6 @@
+
+create view  v1_Manager 
+as 
+select * from Manager
+where depid > 3
+WITH CHECK OPTION;

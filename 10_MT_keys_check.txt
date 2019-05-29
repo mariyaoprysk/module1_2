@@ -1,0 +1,48 @@
+/*
+ALTER TABLE Manager
+ADD PRIMARY KEY (mid);
+*/
+--check
+insert into Manager
+(mid, first_name, last_name, depid, card_number, start_date, inserted_date)
+values (1, 'Ivan', 'Ivanovych', 1, 'KL023456', '01-01-2019', DATE(SYSDATE()));
+go
+
+insert into Manager
+(mid, first_name, last_name, depid, card_number, start_date, inserted_date)
+values (2, 'Jim', 'Little', 5, 'HK234987', '02-03-2019', DATE(SYSDATE()));
+go
+
+--error value (1) is already existed
+insert into Manager
+(mid, first_name, last_name, depid, card_number, start_date, inserted_date)
+values (1, 'Petro', 'Fedoriv', 1, 'KL034567', '01-05-2019', DATE(SYSDATE()));
+go
+
+
+/*
+ALTER TABLE Manager
+ADD CONSTRAINT uk_manager UNIQUE KEY(card_number);
+*/
+--check
+insert into Manager
+(mid, first_name, last_name, depid, card_number, start_date, inserted_date)
+values (4, 'Jimmy', 'Lith', 4, 'HK234987', '02-04-2019', DATE(SYSDATE()));
+go
+
+--error value (1) is already existed
+insert into Manager
+(mid, first_name, last_name, depid, card_number, start_date, inserted_date)
+values (5, 'Petro', 'Fed', 1, 'HK234987', '01-05-2019', DATE(SYSDATE()));
+go
+
+/*
+ALTER TABLE Manager
+ADD CONSTRAINT FK_DepManager
+FOREIGN KEY (depid) REFERENCES Department (depid);
+*/
+--Table Department depid in (1,2,3,4,5)
+insert into Manager
+(mid, first_name, last_name, depid, card_number, start_date, inserted_date)
+values (7, 'Ira', 'Sandy', 8, 'KL023999', '01-04-2019', DATE(SYSDATE()));
+--error depid=8 not exists in Department
